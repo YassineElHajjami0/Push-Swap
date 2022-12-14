@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/13 18:02:13 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/14 10:35:47 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -325,6 +325,26 @@ t_list		*closest_one_to_head(t_list **a, t_allvar *allvar)
 	}
 }
 
+int		fakeswaptwo(t_list **a,t_list **b,t_list **aa,int watchlis)
+{
+	int n;
+	
+	sa(a, 0);
+	n = separate_a_b(a, b);
+	if(n > watchlis)
+	{
+		(*a)->next->num = 1;
+		*aa = (*a)->next; 
+		printf("sa\n");
+		return (n);
+	}
+	else
+	{
+		sa(a, 0);
+		n = separate_a_b(a, b);
+		return (watchlis);
+	}
+}
 int		fakeswap(t_list **a,t_list **b, int watchlis)
 {
 	int n;
@@ -354,7 +374,7 @@ void	move_to_top_of_a(t_list **a, t_list **b, t_allvar *allvar)
 	aa = *a;
 	while(1)
 	{
-		i = fakeswap(a, b, i);
+		i = fakeswaptwo(a, b, &aa, i);
 		if (!closest_one_to_head(a, allvar))
 			break ;
 		if(allvar->res == 0 && (*a)->num == 0)
@@ -415,6 +435,11 @@ void		search_bm_ina(t_list **a, t_list *tmpb, t_allvar *allvar)
 	{
 		if(allvar->frombottom->content > tmpb->content && allvar->frombottom->prev->content < tmpb->content)
 			break ;
+		if(allvar->frombottom->content == (*a)->content)
+		{
+			tmpb->bmina = 0;
+			return ;
+		}
 		allvar->j--;
 		allvar->frombottom = allvar->frombottom->prev;
 	}
@@ -487,53 +512,82 @@ t_list		*search_bminb(t_list **b, t_allvar *allvar)
 
 void	from_b_to_a(t_list **a, t_list **b, t_allvar *allvar)
 {
-	allvar->btomove = search_bminb(b, allvar);
-	allvar->tmpb = *b;
-	allvar->i = 0;
-	allvar->j = 0;
-	if(allvar->btomove->bminb >= 0 && allvar->btomove->bmina >= 0)
+	t_list *aa = *a;
+	while(*b)
 	{
-		while(allvar->i < allvar->btomove->bminb  && allvar->j < allvar->btomove->bmina)
+		count_best_moves(a, b, allvar);
+		allvar->btomove = search_bminb(b, allvar);
+		allvar->tmpb = *b;
+		
+		allvar->i = 0;
+		allvar->j = 0;
+		if(allvar->btomove->bminb >= 0 && allvar->btomove->bmina >= 0)
 		{
-			rr(a, b);
-			allvar->i++;
-			allvar->j++;
-		}	
-		while(allvar->i < allvar->btomove->bminb)
-			rb(b);
-		while(allvar->j < allvar->btomove->bmina)
-			ra(a);
-	}
-	else if(allvar->btomove->bminb <= 0 && allvar->btomove->bmina <= 0)
-	{
-		while(*b != allvar->btomove && *a != allvar->btomove)
-			rrr(a, b);
-		while(*b != allvar->btomove)
-			rrb(b);
-		while(*a != allvar->btomove)
+			while(allvar->i < allvar->btomove->bminb  && allvar->j < allvar->btomove->bmina)
+			{
+				rr(a, b);
+				allvar->i++;
+				allvar->j++;
+			}	
+			while(allvar->i < allvar->btomove->bminb)
+			{
+				rb(b);
+				allvar->i++;
+			}	
+			while(allvar->j < allvar->btomove->bmina)
+			{
+				ra(a);	
+				allvar->j++;
+			}
+		}
+		else if(allvar->btomove->bminb <= 0 && allvar->btomove->bmina <= 0)
 		{
-			printf("=======\n");
-			rra(a);
-		}	
-	}
-	else if(allvar->btomove->bminb >= 0 && allvar->btomove->bmina <= 0)
-	{
-		while(*a != allvar->btomove)
-			ra(a);
-		while(*b != allvar->btomove)
-			rrb(b);
-	}
-	else 
-	{
-		while(*a != allvar->btomove)
+			while(allvar->i > allvar->btomove->bminb  && allvar->j > allvar->btomove->bmina)
+			{
+				rrr(a, b);
+				allvar->i--;
+				allvar->j--;
+			}	
+			while(allvar->i > allvar->btomove->bminb)
+			{
+				rrb(b);
+				allvar->i--;
+			}
+			while(allvar->j > allvar->btomove->bmina)
+			{
+				rra(a);	
+				allvar->j--;
+			}
+		}
+		else if(allvar->btomove->bminb >= 0 && allvar->btomove->bmina <= 0)
 		{
-			printf("=======\n");
-			rra(a);
-		}	
-		while(*b != allvar->btomove)
-			rb(b);
+			while(allvar->j > allvar->btomove->bmina)
+			{
+				ra(a);	
+				allvar->j--;
+			}
+			while(allvar->i < allvar->btomove->bminb)
+			{
+				rrb(b);
+				allvar->i++;
+			}
+		}
+		else 
+		{
+			while(allvar->j < allvar->btomove->bmina)
+			{
+				rra(a);	
+				allvar->j++;
+			}	
+			while(allvar->i > allvar->btomove->bminb)
+			{
+				rb(b);
+				allvar->i--;
+			}
+		}
+		pa(a, b);
+		*a = aa;
 	}
-	pa(a, b);
 }
 
 int main(int ac, char *av[])
@@ -551,38 +605,44 @@ int main(int ac, char *av[])
 	// 	ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
 	// 	i++;
 	// }
-	ft_lstadd_back(&a, ft_lstnew(0));
+	ft_lstadd_back(&a, ft_lstnew(21));
 	ft_lstadd_back(&a, ft_lstnew(2));
-	ft_lstadd_back(&a, ft_lstnew(1));
-	ft_lstadd_back(&a, ft_lstnew(7));
-	ft_lstadd_back(&a, ft_lstnew(5));
-	ft_lstadd_back(&a, ft_lstnew(10));
+	ft_lstadd_back(&a, ft_lstnew(42));
+	ft_lstadd_back(&a, ft_lstnew(43));
+	ft_lstadd_back(&a, ft_lstnew(3));
+	ft_lstadd_back(&a, ft_lstnew(28));
+	ft_lstadd_back(&a, ft_lstnew(36));
+	ft_lstadd_back(&a, ft_lstnew(22));
+	ft_lstadd_back(&a, ft_lstnew(8));
+	ft_lstadd_back(&a, ft_lstnew(26));
+	ft_lstadd_back(&a, ft_lstnew(23));
+	ft_lstadd_back(&a, ft_lstnew(45));
 	ft_lstadd_back(&a, ft_lstnew(11));
-	ft_lstadd_back(&a, ft_lstnew(50));
-	ft_lstadd_back(&a, ft_lstnew(12));
+	ft_lstadd_back(&a, ft_lstnew(29));
+	ft_lstadd_back(&a, ft_lstnew(38));
 	from_a_to_b(&a, &b, &allvar);
 	set_num(&a, &b);
 	move_to_top_of_a(&a, &b, &allvar);
 	count_best_moves(&a, &b, &allvar);
 	from_b_to_a(&a, &b, &allvar);
 	//put_in_b(&a, &b);
-	t_list *tmp = a;
-	printf("-------------a-------------\n");
-	while(a && tmp->next != a)
-	{
-		printf("%d\n", tmp->content);
-		tmp = tmp->next;
-	}
-	printf("%d\n", tmp->content);
-	printf("-------------a-------------\n");
-	printf("-------------b-------------\n");
-	tmp = b;
-	while(b && tmp->next != b)
-	{
-		printf("b->content : %d, b->bmoveina : %d, b->bmoveina : %d\n", tmp->content, tmp->bmina, tmp->bminb);
-		tmp = tmp->next;
-	}
-	printf("b->content : %d, b->bmoveina : %d, b->bmoveina : %d\n", tmp->content, tmp->bmina, tmp->bminb);
-	printf("-------------b-------------\n");
+	// t_list *tmp = a;
+	// printf("-------------a-------------\n");
+	// while(a && tmp->next != a)
+	// {
+	// 	printf("%d\n", tmp->content);
+	// 	tmp = tmp->next;
+	// }
+	// printf("%d\n", tmp->content);
+	// printf("-------------a-------------\n");
+	// printf("-------------b-------------\n");
+	// tmp = b;
+	// while(b && tmp->next != b)
+	// {
+	// 	printf("b->content : %d, b->bmoveina : %d, b->bmoveina : %d\n", tmp->content, tmp->bmina, tmp->bminb);
+	// 	tmp = tmp->next;
+	// }
+	// printf("b->content : %d, b->bmoveina : %d, b->bmoveina : %d\n", tmp->content, tmp->bmina, tmp->bminb);
+	// printf("-------------b-------------\n");
     return (0);
 }
