@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/15 11:47:53 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/15 15:15:00 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,6 +293,8 @@ void	set_num(t_list **a, t_list **b)
 			tocompare->num = 1;
 			tmp = tocompare;
 		}
+		else
+			tocompare->num = 0;
 		tocompare = tocompare->next;
 	}
 }
@@ -342,8 +344,7 @@ int		fakeswaptwo(t_list **a,t_list **b,t_list **aa,int watchlis)
 	n = separate_a_b(a, b);
 	if(n > watchlis)
 	{
-		(*a)->next->num = 1;
-		*aa = (*a)->next; 
+		set_num(a, b); 
 		printf("sa\n");
 		return (n);
 	}
@@ -662,46 +663,81 @@ int main(int ac, char *av[])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
 		i++;
 	}
+	// ft_lstadd_back(&a, ft_lstnew(82));
+	// ft_lstadd_back(&a, ft_lstnew(43));
+	// ft_lstadd_back(&a, ft_lstnew(14));
+	// ft_lstadd_back(&a, ft_lstnew(35));
+	// ft_lstadd_back(&a, ft_lstnew(44));
+	// ft_lstadd_back(&a, ft_lstnew(3));
+	// ft_lstadd_back(&a, ft_lstnew(76));
+	// ft_lstadd_back(&a, ft_lstnew(15));
+	// ft_lstadd_back(&a, ft_lstnew(20));
+	// ft_lstadd_back(&a, ft_lstnew(2));
+	// ft_lstadd_back(&a, ft_lstnew(51));
+	// ft_lstadd_back(&a, ft_lstnew(4));
+	// ft_lstadd_back(&a, ft_lstnew(66));
+	// ft_lstadd_back(&a, ft_lstnew(84));
+	// ft_lstadd_back(&a, ft_lstnew(88));
+	// ft_lstadd_back(&a, ft_lstnew(9));
+	// ft_lstadd_back(&a, ft_lstnew(38));
+	// ft_lstadd_back(&a, ft_lstnew(83));
+	// ft_lstadd_back(&a, ft_lstnew(81));
+	// ft_lstadd_back(&a, ft_lstnew(21));
+	// ft_lstadd_back(&a, ft_lstnew(61));
+	// ft_lstadd_back(&a, ft_lstnew(48));
+	// ft_lstadd_back(&a, ft_lstnew(1));
+	// ft_lstadd_back(&a, ft_lstnew(28));
+	// ft_lstadd_back(&a, ft_lstnew(47));
+	// ft_lstadd_back(&a, ft_lstnew(6));
+	// ft_lstadd_back(&a, ft_lstnew(49));
+	// ft_lstadd_back(&a, ft_lstnew(5));
+	// ft_lstadd_back(&a, ft_lstnew(18));
+	// ft_lstadd_back(&a, ft_lstnew(55));
+	// ft_lstadd_back(&a, ft_lstnew(56));
+	// ft_lstadd_back(&a, ft_lstnew(93));
+	// ft_lstadd_back(&a, ft_lstnew(29));
+	// ft_lstadd_back(&a, ft_lstnew(59));
+	// ft_lstadd_back(&a, ft_lstnew(91));
+	// ft_lstadd_back(&a, ft_lstnew(24));
+	// ft_lstadd_back(&a, ft_lstnew(99));
+	// ft_lstadd_back(&a, ft_lstnew(97));
+	// ft_lstadd_back(&a, ft_lstnew(11));
+	// ft_lstadd_back(&a, ft_lstnew(34));
+	// ft_lstadd_back(&a, ft_lstnew(7));
+	// ft_lstadd_back(&a, ft_lstnew(67));
+	// ft_lstadd_back(&a, ft_lstnew(73));
+	// ft_lstadd_back(&a, ft_lstnew(39));
+	// ft_lstadd_back(&a, ft_lstnew(32));
+	// ft_lstadd_back(&a, ft_lstnew(95));
+	// ft_lstadd_back(&a, ft_lstnew(78));
+	// ft_lstadd_back(&a, ft_lstnew(31));
+	// ft_lstadd_back(&a, ft_lstnew(58));
+	// ft_lstadd_back(&a, ft_lstnew(68));
 	from_a_to_b(&a, &b, &allvar);
 	set_num(&a, &b);
 	move_to_top_of_a(&a, &b, &allvar);
 	count_best_moves(&a, &b, &allvar);
-	//from_b_to_a(&a, &b, &allvar);
-	//set_the_head(&a, &allvar);
+	from_b_to_a(&a, &b, &allvar);
+	set_the_head(&a, &allvar);
 	//put_in_b(&a, &b);
 	t_list *tmp = a;
-	printf("-------------a-------------\n");
-	while(a && tmp->next != a)
-	{
-		printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
-		tmp = tmp->next;
-	}
-	printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
-	printf("-------------a-------------\n");
-	printf("-------------b-------------\n");
-	tmp = b;
-	while(b && tmp->next != b)
-	{
-		printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
-		tmp = tmp->next;
-	}
-	printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
-	printf("-------------b-------------\n");
+	// printf("-------------a-------------\n");
+	// while(a && tmp->next != a)
+	// {
+	// 	printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
+	// 	tmp = tmp->next;
+	// }
+	// printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
+	// printf("-------------a-------------\n");
+	// printf("-------------b-------------\n");
+	// tmp = b;
+	// while(b && tmp->next != b)
+	// {
+	// 	printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
+	// 	tmp = tmp->next;
+	// }
+	// printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
+	// printf("-------------b-------------\n");
     return (0);
 }
 
-	// ft_lstadd_back(&a, ft_lstnew(21));
-	// ft_lstadd_back(&a, ft_lstnew(2));
-	// ft_lstadd_back(&a, ft_lstnew(42));
-	// ft_lstadd_back(&a, ft_lstnew(43));
-	// ft_lstadd_back(&a, ft_lstnew(3));
-	// ft_lstadd_back(&a, ft_lstnew(28));
-	// ft_lstadd_back(&a, ft_lstnew(36));
-	// ft_lstadd_back(&a, ft_lstnew(22));
-	// ft_lstadd_back(&a, ft_lstnew(8));
-	// ft_lstadd_back(&a, ft_lstnew(26));
-	// ft_lstadd_back(&a, ft_lstnew(23));
-	// ft_lstadd_back(&a, ft_lstnew(45));
-	// ft_lstadd_back(&a, ft_lstnew(11));
-	// ft_lstadd_back(&a, ft_lstnew(29));
-	// ft_lstadd_back(&a, ft_lstnew(38));
