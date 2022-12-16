@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/15 15:15:00 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:14:58 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -663,6 +663,9 @@ int main(int ac, char *av[])
 		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
 		i++;
 	}
+	// ft_lstadd_back(&a, ft_lstnew(162));
+	// ft_lstadd_back(&a, ft_lstnew(94));
+	// ft_lstadd_back(&a, ft_lstnew(156));
 	// ft_lstadd_back(&a, ft_lstnew(82));
 	// ft_lstadd_back(&a, ft_lstnew(43));
 	// ft_lstadd_back(&a, ft_lstnew(14));
@@ -720,7 +723,7 @@ int main(int ac, char *av[])
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
 	//put_in_b(&a, &b);
-	t_list *tmp = a;
+	//t_list *tmp = a;
 	// printf("-------------a-------------\n");
 	// while(a && tmp->next != a)
 	// {
