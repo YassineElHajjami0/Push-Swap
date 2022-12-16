@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/16 10:14:58 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:46:28 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -273,7 +273,6 @@ void	set_num(t_list **a, t_list **b)
 	t_list *initialtmp;
 	t_list *tocompare;
 
-
 	initialtmp = *a;
 	tmp = (*a)->next;
 	while(initialtmp->next != *a && tmp != *a)
@@ -282,7 +281,6 @@ void	set_num(t_list **a, t_list **b)
 			initialtmp = tmp;
 		tmp = tmp->next;
 	}
-
 	tmp = initialtmp;
 	tocompare = initialtmp->next;
 	while (tocompare != initialtmp)
@@ -301,42 +299,33 @@ void	set_num(t_list **a, t_list **b)
 
 t_list		*closest_one_to_head(t_list **a, t_allvar *allvar) 
 {
-	t_list *firsttmp;
-	t_list *lasttmp;
-
-	firsttmp = *a;
-	lasttmp = (*a)->prev;
+	allvar->firsttmp = *a;
+	allvar->lasttmp = (*a)->prev;
 	allvar->topcp = 0;
 	allvar->bottomcp = -1;
 	while(1)
 	{
-		if(firsttmp->num == 0)
+		if(allvar->firsttmp->num == 0)
 			break ;
 		allvar->topcp++;
-		firsttmp = firsttmp->next;
-		if(firsttmp == *a)
+		allvar->firsttmp = allvar->firsttmp->next;
+		if(allvar->firsttmp == *a)
 			return (NULL);
 	}
 	while(1)
 	{
-		if(lasttmp->num == 0)
+		if(allvar->lasttmp->num == 0)
 			break ;
 		allvar->bottomcp--;
-		lasttmp= lasttmp->prev;
+		allvar->lasttmp= allvar->lasttmp->prev;
 	}
 	if (allvar->topcp < allvar->bottomcp * -1)
-	{
-			allvar->res = allvar->topcp;
-			return (firsttmp);
-	}
+			return (allvar->res = allvar->topcp, allvar->firsttmp);
 	else
-	{
-		allvar->res = allvar->bottomcp;
-		return	(firsttmp);
-	}
+		return	(allvar->res = allvar->bottomcp, allvar->firsttmp);
 }
 
-int		fakeswaptwo(t_list **a,t_list **b,t_list **aa,int watchlis)
+int		fakeswaptwo(t_list **a,t_list **b, int watchlis)
 {
 	int n;
 	
@@ -355,6 +344,7 @@ int		fakeswaptwo(t_list **a,t_list **b,t_list **aa,int watchlis)
 		return (watchlis);
 	}
 }
+
 int		fakeswap(t_list **a,t_list **b, int watchlis)
 {
 	int n;
@@ -377,14 +367,12 @@ int		fakeswap(t_list **a,t_list **b, int watchlis)
 
 void	move_to_top_of_a(t_list **a, t_list **b, t_allvar *allvar)
 {
-	t_list *aa;
 	int	i;
 	
-	i = aa->count;
-	aa = *a;
+	i = 0;
 	while(1)
 	{
-		i = fakeswaptwo(a, b, &aa, i);
+		i = fakeswaptwo(a, b, i);
 		if (!closest_one_to_head(a, allvar))
 			break ;
 		if(allvar->res == 0 && (*a)->num == 0)
@@ -397,26 +385,14 @@ void	move_to_top_of_a(t_list **a, t_list **b, t_allvar *allvar)
 		else
 			rra(a);
 	}
-	//*a = aa;
 }
 
 void	from_a_to_b(t_list **a,t_list **b,t_allvar *allvar)
 {
-	t_list *initialtmp;
-	t_list	*tmp;
 	int	watchlis;
 
 	watchlis = separate_a_b(a, b);
 	watchlis = fakeswap(a, b, watchlis);
-	// initialtmp = *a;
-	// tmp = (*a)->next;
-	// while(initialtmp->next != *a && tmp != *a)
-	// {
-	// 	if(tmp->count >= initialtmp->count)
-	// 		initialtmp = tmp;
-	// 	tmp = tmp->next;
-	// }
-	// *a = initialtmp;
 }
 
 //--------from b to a
@@ -450,11 +426,6 @@ void		search_bm_ina(t_list **a, t_list *tmpb, t_allvar *allvar)
 		   (allvar->frombottom->prev->content > allvar->frombottom->content  &&
 		   (tmpb->content < allvar->frombottom->content || tmpb->content > allvar->frombottom->prev->content)))
 			break ;
-		// if(allvar->frombottom->content == (*a)->content)
-		// {
-		// 	tmpb->bmina = 0;
-		// 	return ;
-		// }
 		allvar->j--;
 		allvar->frombottom = allvar->frombottom->prev;
 	}
@@ -492,20 +463,18 @@ void		search_bm_inb(t_list **b, t_list *tmpb, t_allvar *allvar)
 
 void		count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
 {
+	if(!*b)
+		return ;
 	allvar->tmpb = *b;
-	//allvar->k = 0;
 	while(1)
 	{
-		//allvar->tmpb->bminb = allvar->k;
 		search_bm_ina(a, allvar->tmpb, allvar);
 		search_bm_inb(b, allvar->tmpb, allvar);
 		allvar->tmpb->bmove = abs(allvar->tmpb->bmina) + abs(allvar->tmpb->bminb);
 		allvar->tmpb = allvar->tmpb->next;
-		//allvar->k++;
 		if (allvar->tmpb == *b)
 			break ;
 	}
-	
 }
 
 t_list		*search_bminb(t_list **b, t_allvar *allvar)
@@ -723,7 +692,7 @@ int main(int ac, char *av[])
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
 	//put_in_b(&a, &b);
-	//t_list *tmp = a;
+	// t_list *tmp = a;
 	// printf("-------------a-------------\n");
 	// while(a && tmp->next != a)
 	// {

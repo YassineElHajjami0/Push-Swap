@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/13 15:03:53 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/16 10:46:45 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_allvar
 	t_list	*tmpb;
 	t_list	*btomove;
 	t_list	*compare;
+	t_list	*firsttmp;
+	t_list	*lasttmp;
 	t_list	*fromtop;
 	t_list	*frombottom;
 }				t_allvar;
