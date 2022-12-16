@@ -1,16 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lstfunctions.c                                     :+:      :+:    :+:   */
+/*   ft_lst_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 08:04:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/13 09:48:12 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/16 16:10:48 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+t_list	*ft_lstnew(int c)
+{
+	t_list	*n;
+
+	n = (t_list *)malloc(sizeof(t_list));
+	if (!n)
+		return (NULL);
+	n->content = c;
+	n->next = NULL;
+	n->prev = NULL;
+	n->count = 0;
+	n->num = 0;
+	n->bmove = 0;
+	return (n);
+}
 
 int	ft_atoi(const char *str)
 {
@@ -63,5 +79,11 @@ void	ft_lstadd_back(t_list **lst, t_list *neww)
 			(*lst)->prev = neww;
 		}
 	}
+}
 
+void	rr(t_list **a, t_list **b)
+{
+	*a = (*a)->next;
+	*b = (*b)->next;
+	printf("rr\n");
 }

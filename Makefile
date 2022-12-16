@@ -1,9 +1,14 @@
 
-SRCMAN = ft_atoi.c \
+SRCMAN = main.c \
 	ft_lst_utils.c \
+	swap_push.c \
+	rotates.c \
+	fake_swaps.c \
+	setcounts_nums.c \
+	best_moves.c \
+	put_in_a.c \
+	fn.c \
 
-
-OBJMAN = $(SRCMAN:.c=.o)
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -15,16 +20,12 @@ HEADER = push_swap.h
 
 all: $(NAME)
 
-$(NAME): $(OBJMAN)
-	$(CC) $(CFLAGS) $(OBJMAN) -o $(NAME)
-
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $<
+$(NAME): $(SRCMAN) $(HEADER)
+	$(CC) $(CFLAGS) $(SRCMAN) -o $(NAME)
 
 clean:
-	$(FRM) $(OBJMAN)
+	$(FRM) $(NAME)
 
 fclean: clean
-	$(FRM) $(NAME)
 
 re: fclean all
