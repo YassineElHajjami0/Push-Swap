@@ -8,6 +8,9 @@ SRCMAN = main.c \
 	best_moves.c \
 	put_in_a.c \
 	fn.c \
+	ft_split.c \
+	ft_strjoin.c \
+	parsing.c \
 
 
 CC = cc

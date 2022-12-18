@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 08:04:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/16 16:10:48 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/17 10:39:57 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	ft_atoi(const char *str)
 void	ft_lstadd_back(t_list **lst, t_list *neww)
 {
 	t_list	*t;
+
 	if (lst && neww)
 	{
 		if (!*lst)

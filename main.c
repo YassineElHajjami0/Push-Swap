@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/16 16:28:21 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 12:52:02 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,23 @@
 #include<stdlib.h>
 #include "push_swap.h"
 
-int main(int ac, char *av[])
+int	main(int ac, char *av[])
 {
-	int			i;
-    t_list		*a;
+	t_list		*a;
 	t_list		*b;
 	t_allvar	allvar;
-	
-	i = 1;
-	//printf("length %d\n", ac - 1);
+	char		**str;
+
 	b = NULL;
 	a = NULL;
-	while(av[i])
+	if (ac == 1)
 	{
-		ft_lstadd_back(&a, ft_lstnew(ft_atoi(av[i])));
-		i++;
+		write(1, "Eroor\n", 6);
+		return (0);
 	}
+	str = ft_split(ft_strjoin(ac - 1, av + 1, " "), ' ');
+	if (!parsing(&a, str))
+		return (0);
 	from_a_to_b(&a, &allvar);
 	set_num(&a, &allvar);
 	move_to_top_of_a(&a, &b, &allvar);
@@ -37,8 +38,7 @@ int main(int ac, char *av[])
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
 	ac = 1;
-	//put_in_b(&a, &b);
-	// t_list *tmp = a;
+	/* 	//t_list *tmp = a;
 	// printf("-------------a-------------\n");
 	// while(a && tmp->next != a)
 	// {
@@ -55,7 +55,6 @@ int main(int ac, char *av[])
 	// 	tmp = tmp->next;
 	// }
 	// printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
-	// printf("-------------b-------------\n");
-    return (0);
+	// printf("-------------b-------------\n"); */
+	return (0);
 }
-
