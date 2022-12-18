@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:21:26 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 10:36:00 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:16:30 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,10 @@ int	abs(int x)
 		return (x * -1);
 }
 
-void	search_bm_ina(t_list **a, t_list *tmpb, t_allvar *allvar)
+int	help_search_bm_in_a(t_list **a, t_list *tmpb, t_allvar *allvar)
 {
-	allvar->i = 0;
-	allvar->j = -1;
-	allvar->fromtop = *a;
 	allvar->frombottom = (*a)->prev;
-	while (1)
-	{
-		if (((allvar->fromtop->content > tmpb->content)
-				&& (allvar->fromtop->prev->content < tmpb->content))
-			|| ((allvar->fromtop->prev->content > allvar->fromtop->content)
-				&& (tmpb->content < allvar->fromtop->content
-					|| tmpb->content > allvar->fromtop->prev->content)))
-			break ;
-		allvar->i++;
-		allvar->fromtop = allvar->fromtop->next;
-	}
+	allvar->j = -1;
 	while (1)
 	{
 		if (((allvar->frombottom->content > tmpb->content)
@@ -48,10 +35,31 @@ void	search_bm_ina(t_list **a, t_list *tmpb, t_allvar *allvar)
 		allvar->j--;
 		allvar->frombottom = allvar->frombottom->prev;
 	}
-	if (allvar->i < allvar->j * -1)
+	return (allvar->j);
+}
+
+void	search_bm_ina(t_list **a, t_list *tmpb, t_allvar *allvar)
+{
+	int	r;
+
+	allvar->i = 0;
+	allvar->fromtop = *a;
+	while (1)
+	{
+		if (((allvar->fromtop->content > tmpb->content)
+				&& (allvar->fromtop->prev->content < tmpb->content))
+			|| ((allvar->fromtop->prev->content > allvar->fromtop->content)
+				&& (tmpb->content < allvar->fromtop->content
+					|| tmpb->content > allvar->fromtop->prev->content)))
+			break ;
+		allvar->i++;
+		allvar->fromtop = allvar->fromtop->next;
+	}
+	r = help_search_bm_in_a(a, tmpb, allvar);
+	if (allvar->i < r * -1)
 		tmpb->bmina = allvar->i;
 	else
-		tmpb->bmina = allvar->j;
+		tmpb->bmina = r;
 }
 
 void	search_bm_inb(t_list **b, t_list *tmpb, t_allvar *allvar)
