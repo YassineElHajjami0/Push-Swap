@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:26:22 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 10:39:22 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:57:55 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,11 @@ void	set_the_head(t_list	**a, t_allvar *allvar)
 		while (*a != allvar->tmpa)
 			rra(a);
 	}
+}
+
+void	ss(t_list **head)
+{
+	sa(head, 1);
+	sb(head);
+	printf("ss\n");
 }

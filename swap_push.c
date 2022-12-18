@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:07:17 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 11:11:06 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 13:58:01 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,6 @@ void	sb(t_list **lst)
 	printf("sb\n");
 }
 
-void	ss(t_list **head)
-{
-	sa(head, 1);
-	sb(head);
-	printf("ss\n");
-}
-
 void	pb(t_list **head, t_list **b)
 {
 	t_list	*tmp;
@@ -84,6 +77,23 @@ void	pb(t_list **head, t_list **b)
 	printf("pb\n");
 }
 
+void	helpa(t_list **head, t_list **b)
+{
+	t_list	*tmp;
+
+	tmp = NULL;
+	tmp = (*b)->next;
+	tmp->prev = (*b)->prev;
+	(*b)->prev->next = tmp;
+	(*b)->next = *head;
+	(*b)->prev = (*head)->prev;
+	(*head)->prev->next = *b;
+	(*head)->prev = *b;
+	*head = *b;
+	*b = tmp;
+	printf("pa\n");
+}
+
 int	pa(t_list **head, t_list **b)
 {
 	t_list	*tmp;
@@ -104,16 +114,7 @@ int	pa(t_list **head, t_list **b)
 	}
 	else
 	{
-		tmp = (*b)->next;
-		tmp->prev = (*b)->prev;
-		(*b)->prev->next = tmp;
-		(*b)->next = *head;
-		(*b)->prev = (*head)->prev;
-		(*head)->prev->next = *b;
-		(*head)->prev = *b;
-		*head = *b;
-		*b = tmp;
-		printf("pa\n");
+		helpa(head, b);
 		return (2);
 	}
 }
