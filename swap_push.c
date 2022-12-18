@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:07:17 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 13:58:01 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:21:56 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	sa(t_list **lst, int show)
 	lhead->next = tmp;
 	*lst = tmp;
 	if (show == 1)
-		printf("sa\n");
+		write(1, "sa\n", 3);
 }
 
 void	sb(t_list **lst)
@@ -48,7 +48,7 @@ void	sb(t_list **lst)
 		lhead = lhead->next;
 	lhead->next = tmp;
 	*lst = tmp;
-	printf("sb\n");
+	write(1, "sb\n", 3);
 }
 
 void	pb(t_list **head, t_list **b)
@@ -74,7 +74,7 @@ void	pb(t_list **head, t_list **b)
 	}
 	*b = *head;
 	*head = tmp;
-	printf("pb\n");
+	write(1, "pb\n", 3);
 }
 
 void	helpa(t_list **head, t_list **b)
@@ -91,7 +91,7 @@ void	helpa(t_list **head, t_list **b)
 	(*head)->prev = *b;
 	*head = *b;
 	*b = tmp;
-	printf("pa\n");
+	write(1, "pa\n", 3);
 }
 
 int	pa(t_list **head, t_list **b)
@@ -109,7 +109,7 @@ int	pa(t_list **head, t_list **b)
 		(*head)->prev = *b;
 		*head = *b;
 		*b = tmp;
-		printf("pa\n");
+		write(1, "pa\n", 3);
 		return (1);
 	}
 	else

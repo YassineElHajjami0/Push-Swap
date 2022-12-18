@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 12:52:02 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:19:51 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int ac, char *av[])
 	a = NULL;
 	if (ac == 1)
 	{
-		write(1, "Eroor\n", 6);
+		write(2, "Eroor\n", 6);
 		return (0);
 	}
 	str = ft_split(ft_strjoin(ac - 1, av + 1, " "), ' ');
@@ -37,8 +37,7 @@ int	main(int ac, char *av[])
 	count_best_moves(&a, &b, &allvar);
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
-	ac = 1;
-	/* 	//t_list *tmp = a;
+	/* //t_list *tmp = a;
 	// printf("-------------a-------------\n");
 	// while(a && tmp->next != a)
 	// {

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:09:48 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 11:03:42 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:20:56 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,30 @@
 void	rra(t_list **head)
 {
 	*head = (*head)->prev;
-	printf("rra\n");
+	write(1, "rra\n", 4);
 }
 
 void	rrb(t_list **b)
 {
 	*b = (*b)->prev;
-	printf("rrb\n");
+	write(1, "rrb\n", 4);
 }
 
 void	rrr(t_list **head, t_list **b)
 {
 	rra(head);
 	rrb(b);
-	printf("rrr\n");
+	write(1, "rrr\n", 4);
 }
 
 void	ra(t_list **head)
 {
 	*head = (*head)->next;
-	printf("ra\n");
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_list **head)
 {
 	*head = (*head)->next;
-	printf("rb\n");
+	write(1, "rb\n", 3);
 }
