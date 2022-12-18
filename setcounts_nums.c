@@ -6,11 +6,26 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:17:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 11:05:20 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/18 14:06:01 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	help_set_count(t_list **a, t_allvar *allvar)
+{
+	allvar->tmp = (*a)->next;
+	allvar->initialtmp = *a;
+	while (1)
+	{
+		if (allvar->tmp->count >= allvar->initialtmp->count)
+			allvar->initialtmp = allvar->tmp;
+		allvar->tmp = allvar->tmp->next;
+		if (allvar->tmp == *a)
+			break ;
+	}
+	return (allvar->initialtmp->count);
+}
 
 int	set_count(t_list **a, t_allvar *allvar)
 {
@@ -34,17 +49,7 @@ int	set_count(t_list **a, t_allvar *allvar)
 		if (allvar->initialtmp == *a)
 			break ;
 	}
-	allvar->tmp = (*a)->next;
-	allvar->initialtmp = *a;
-	while (1)
-	{
-		if (allvar->tmp->count >= allvar->initialtmp->count)
-			allvar->initialtmp = allvar->tmp;
-		allvar->tmp = allvar->tmp->next;
-		if (allvar->tmp == *a)
-			break ;
-	}
-	return (allvar->initialtmp->count);
+	return (help_set_count(a, allvar));
 }
 
 void	set_num(t_list **a, t_allvar *allvar)

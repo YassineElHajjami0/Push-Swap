@@ -12,7 +12,6 @@ SRCMAN = main.c \
 	ft_strjoin.c \
 	parsing.c \
 
-
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 AR = ar cr
