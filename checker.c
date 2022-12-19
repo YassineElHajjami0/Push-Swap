@@ -6,12 +6,22 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:16:06 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 15:15:44 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:24:33 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
+
+void	freestr(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
 
 void	checkit(t_list **a, t_list **b, char *line, t_allvar *allvar)
 {
@@ -71,9 +81,14 @@ void	checksorting(t_list **a, t_allvar *allvar)
 	write(1, "OK\n", 3);
 	exit(0);
 }
+void funcc(void)
+{
+	system("leaks push_swap");
 
+}
 int	main(int ac, char *av[])
 {
+	atexit (funcc);
 	t_list		*a;
 	t_list		*b;
 	char		**str;
@@ -86,9 +101,12 @@ int	main(int ac, char *av[])
 		write(2, "Eroor\n", 6);
 		return (0);
 	}
-	str = ft_split(ft_strjoin(ac - 1, av + 1, " "), ' ');
+	char *o = ft_strjoin(ac - 1, av + 1, " ");
+	str = ft_split(o , ' ');
 	if (!parsing(&a, str))
 		return (0);
+	free(o);
+	freestr(str);
 	gettline(&a, &b, &allvar);
 	checksorting(&a, &allvar);
 	return (0);
