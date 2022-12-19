@@ -6,15 +6,31 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 17:04:06 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 18:03:28 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include<stdlib.h>
 #include "push_swap.h"
 
+void funcc(void)
+{
+	system("leaks push_swap");
+}
+
+void	freestr(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		free(str[i++]);
+	free(str);
+}
+
 int	main(int ac, char *av[])
 {
+	//atexit(funcc);
 	t_list		*a;
 	t_list		*b;
 	t_allvar	allvar;
@@ -30,20 +46,11 @@ int	main(int ac, char *av[])
 	str = ft_split(ft_strjoin(ac - 1, av + 1, " "), ' ');
 	if (!parsing(&a, str))
 		return (0);
+	//freestr(str);
 	from_a_to_b(&a, &allvar);
 	set_num(&a, &allvar);
 	move_to_top_of_a(&a, &b, &allvar);
 	count_best_moves(&a, &b, &allvar);
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
-	return (0);
 }
-// t_list *tmp = a;
-// printf("-------------a-------------\n");
-// while(a && tmp->next != a)
-// {
-// 	printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
-// 	tmp = tmp->next;
-// }
-// printf("%d num= %d  count = %d\n", tmp->content, tmp->num, tmp->count);
-// printf("-------------a-------------\n");
