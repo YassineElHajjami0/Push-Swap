@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 08:04:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 12:33:04 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:16:34 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	rr(t_list **a, t_list **b, int show)
 {
 	ra(a, 0);
 	rb(b, 0);
-	if(show == 1)
+	if (show == 1)
 		write(1, "rr\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:58:40 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:18:52 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,6 @@ void	check4(t_list **a, t_list **b, t_allvar *allvar);
 void	from_b_to_a(t_list **a, t_list **b, t_allvar *allvar);
 int		ft_strlen(t_list **a);
 void	set_the_head(t_list	**a, t_allvar *allvar);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

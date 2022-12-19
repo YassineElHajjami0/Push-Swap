@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:26:22 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:57:57 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:16:29 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ss(t_list **head, t_list **b, int show)
 {
 	sa(head, 0);
 	sb(b, 0);
-	if(show == 1)
+	if (show == 1)
 		write(1, "ss\n", 3);
 }
 

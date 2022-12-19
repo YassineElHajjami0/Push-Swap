@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:09:48 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:51:39 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 15:16:14 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	rra(t_list **head, int show)
 		exit(0);
 	}
 	*head = (*head)->prev;
-	if(show == 1)
+	if (show == 1)
 		write(1, "rra\n", 4);
 }
 
-void	rrb(t_list **b, int	show)
+void	rrb(t_list **b, int show)
 {
 	if (!*b)
 	{
@@ -32,7 +32,7 @@ void	rrb(t_list **b, int	show)
 		exit(0);
 	}
 	*b = (*b)->prev;
-	if(show == 1)
+	if (show == 1)
 		write(1, "rrb\n", 4);
 }
 
@@ -40,7 +40,7 @@ void	rrr(t_list **head, t_list **b, int show)
 {
 	rra(head, 0);
 	rrb(b, 0);
-	if(show == 1)
+	if (show == 1)
 		write(1, "rrr\n", 4);
 }
 
@@ -52,7 +52,7 @@ void	ra(t_list **head, int show)
 		exit(0);
 	}
 	*head = (*head)->next;
-	if(show == 1)
+	if (show == 1)
 		write(1, "ra\n", 3);
 }
 
@@ -64,6 +64,6 @@ void	rb(t_list **head, int show)
 		exit(0);
 	}
 	*head = (*head)->next;
-	if(show == 1)
+	if (show == 1)
 		write(1, "rb\n", 3);
 }
