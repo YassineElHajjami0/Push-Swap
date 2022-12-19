@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:12:08 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:18:27 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:27:41 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	move_to_top_of_a(t_list **a, t_list **b, t_allvar *allvar)
 			break ;
 		if (allvar->res == 0 && (*a)->num == 0)
 		{
-			pb(a, b);
+			pb(a, b, 1);
 			continue ;
 		}
 		if (allvar->res > 0)
-			ra(a);
+			ra(a, 1);
 		else
-			rra(a);
+			rra(a, 1);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:26:22 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:18:44 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:34:05 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,37 @@ void	set_the_head(t_list	**a, t_allvar *allvar)
 	if (allvar->k < allvar->j / 2)
 	{
 		while (*a != allvar->tmpa)
-			ra(a);
+			ra(a, 1);
 	}
 	else
 	{
 		while (*a != allvar->tmpa)
-			rra(a);
+			rra(a, 1);
 	}
 }
 
-void	ss(t_list **head)
+void	ss(t_list **head, int show)
 {
-	sa(head, 1);
-	sb(head);
-	write(1, "ss\n", 3);
+	sa(head, 0);
+	sb(head, 0);
+	if(show == 1)
+		write(1, "ss\n", 3);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+	int		r;
+
+	if (!n)
+		return (0);
+	i = 0;
+	r = 0;
+	while ((s1[i] || s2[i]) && i < n - 1)
+	{
+		if (s1[i] != s2[i])
+			return (r = (unsigned char)s1[i] - (unsigned char)s2[i]);
+		i++;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }

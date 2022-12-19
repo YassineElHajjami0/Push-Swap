@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:23:18 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/17 10:44:00 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:39:05 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@ void	check1(t_list **a, t_list **b, t_allvar *allvar)
 	while (allvar->i < allvar->btomove->bminb
 		&& allvar->j < allvar->btomove->bmina)
 	{
-		rr(a, b);
+		rr(a, b, 1);
 		allvar->i++;
 		allvar->j++;
 	}	
 	while (allvar->i < allvar->btomove->bminb)
 	{
-		rb(b);
+		rb(b, 1);
 		allvar->i++;
 	}	
 	while (allvar->j < allvar->btomove->bmina)
 	{
-		ra(a);
+		ra(a, 1);
 		allvar->j++;
 	}
 }
@@ -38,18 +38,18 @@ void	check2(t_list **a, t_list **b, t_allvar *allvar)
 	while (allvar->i > allvar->btomove->bminb
 		&& allvar->j > allvar->btomove->bmina)
 	{
-		rrr(a, b);
+		rrr(a, b, 1);
 		allvar->i--;
 		allvar->j--;
 	}	
 	while (allvar->i > allvar->btomove->bminb)
 	{
-		rrb(b);
+		rrb(b, 1);
 		allvar->i--;
 	}
 	while (allvar->j > allvar->btomove->bmina)
 	{
-		rra(a);
+		rra(a, 1);
 		allvar->j--;
 	}
 }
@@ -58,12 +58,12 @@ void	check3(t_list **a, t_list **b, t_allvar *allvar)
 {
 	while (allvar->j > allvar->btomove->bmina)
 	{
-		rra(a);
+		rra(a, 1);
 		allvar->j--;
 	}
 	while (allvar->i < allvar->btomove->bminb)
 	{
-		rb(b);
+		rb(b, 1);
 		allvar->i++;
 	}
 }
@@ -72,12 +72,12 @@ void	check4(t_list **a, t_list **b, t_allvar *allvar)
 {
 	while (allvar->j < allvar->btomove->bmina)
 	{
-		ra(a);
+		ra(a, 1);
 		allvar->j++;
 	}	
 	while (allvar->i > allvar->btomove->bminb)
 	{
-		rrb(b);
+		rrb(b, 1);
 		allvar->i--;
 	}
 }
@@ -99,6 +99,6 @@ void	from_b_to_a(t_list **a, t_list **b, t_allvar *allvar)
 			check3(a, b, allvar);
 		else
 			check4(a, b, allvar);
-		pa(a, b);
+		pa(a, b, 1);
 	}
 }

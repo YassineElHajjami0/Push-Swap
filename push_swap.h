@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 12:52:17 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:38:44 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ void	ft_lstadd_back(t_list **lst, t_list *neww);
 char	*ft_strjoin(int size, char **strs, char *sep);
 char	**ft_split(char const *s, char c);
 void	sa(t_list **lst, int show);
-void	sb(t_list **lst);
-void	ss(t_list **head);
-void	rra(t_list **head);
-void	rrb(t_list **b);
-void	rrr(t_list **head, t_list **b);
-void	ra(t_list **head);
-void	rb(t_list **head);
-void	rr(t_list **a, t_list **b);
-void	pb(t_list **head, t_list **b);
-int		pa(t_list **head, t_list **b);
+void	sb(t_list **lst, int show);
+void	ss(t_list **head, int show);
+void	rra(t_list **head, int show);
+void	rrb(t_list **b, int show);
+void	rrr(t_list **head, t_list **b, int show);
+void	ra(t_list **head, int show);
+void	rb(t_list **head, int show);
+void	rr(t_list **a, t_list **b, int show);
+void	pb(t_list **head, t_list **b, int show);
+int		pa(t_list **head, t_list **b, int show);
 int		set_count(t_list **a, t_allvar *allvar);
 void	set_num(t_list **a, t_allvar *allvar);
 t_list	*closest_one_to_head(t_list **a, t_allvar *allvar);
@@ -86,5 +86,6 @@ void	check4(t_list **a, t_list **b, t_allvar *allvar);
 void	from_b_to_a(t_list **a, t_list **b, t_allvar *allvar);
 int		ft_strlen(t_list **a);
 void	set_the_head(t_list	**a, t_allvar *allvar);
+int	ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

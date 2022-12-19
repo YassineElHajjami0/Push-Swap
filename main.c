@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 11:50:45 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:19:51 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:44:20 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int ac, char *av[])
 	count_best_moves(&a, &b, &allvar);
 	from_b_to_a(&a, &b, &allvar);
 	set_the_head(&a, &allvar);
-	/* //t_list *tmp = a;
+	// t_list *tmp = a;
 	// printf("-------------a-------------\n");
 	// while(a && tmp->next != a)
 	// {
@@ -54,6 +54,6 @@ int	main(int ac, char *av[])
 	// 	tmp = tmp->next;
 	// }
 	// printf("b->content : %d, b->bmove: %d, bmina:%d  ,  bminb:%d\n", tmp->content, tmp->bmove, tmp->bmina, tmp->bminb);
-	// printf("-------------b-------------\n"); */
+	// printf("-------------b-------------\n");
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 08:04:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:19:02 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:33:04 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,10 @@ void	ft_lstadd_back(t_list **lst, t_list *neww)
 	}
 }
 
-void	rr(t_list **a, t_list **b)
+void	rr(t_list **a, t_list **b, int show)
 {
-	*a = (*a)->next;
-	*b = (*b)->next;
-	write(1, "rr\n", 3);
+	ra(a, 0);
+	rb(b, 0);
+	if(show == 1)
+		write(1, "rr\n", 3);
 }

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:07:17 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:21:56 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 12:54:00 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,13 @@ void	sa(t_list **lst, int show)
 		write(1, "sa\n", 3);
 }
 
-void	sb(t_list **lst)
+void	sb(t_list **lst, int show)
 {
+	if(!lst)
+	{
+		write(2, "Eroor\n", 6);
+		exit(0);
+	}
 	t_list	*tmp;
 	t_list	*lhead;
 
@@ -48,15 +53,19 @@ void	sb(t_list **lst)
 		lhead = lhead->next;
 	lhead->next = tmp;
 	*lst = tmp;
-	write(1, "sb\n", 3);
+	if (show == 1)
+		write(1, "sa\n", 3);
 }
 
-void	pb(t_list **head, t_list **b)
+void	pb(t_list **head, t_list **b, int show)
 {
 	t_list	*tmp;
 
 	if (!*head)
-		return ;
+	{
+		write(2, "Eroor\n", 6);
+		exit(0);
+	}
 	tmp = (*head)->next;
 	tmp->prev = (*head)->prev;
 	(*head)->prev->next = tmp;
@@ -74,10 +83,11 @@ void	pb(t_list **head, t_list **b)
 	}
 	*b = *head;
 	*head = tmp;
-	write(1, "pb\n", 3);
+	if(show == 1)
+		write(1, "pb\n", 3);
 }
 
-void	helpa(t_list **head, t_list **b)
+void	helpa(t_list **head, t_list **b, int show)
 {
 	t_list	*tmp;
 
@@ -91,16 +101,20 @@ void	helpa(t_list **head, t_list **b)
 	(*head)->prev = *b;
 	*head = *b;
 	*b = tmp;
-	write(1, "pa\n", 3);
+	if(show == 1)
+		write(1, "pa\n", 3);
 }
 
-int	pa(t_list **head, t_list **b)
+int	pa(t_list **head, t_list **b, int show)
 {
 	t_list	*tmp;
 
 	tmp = NULL;
-	if (!*b || !*head)
-		return (0);
+	if (!*b)
+	{
+		write(2, "Eroor\n", 6);
+		exit(0);
+	}
 	if ((*b)->next == *b)
 	{
 		(*b)->next = *head;
@@ -109,12 +123,13 @@ int	pa(t_list **head, t_list **b)
 		(*head)->prev = *b;
 		*head = *b;
 		*b = tmp;
-		write(1, "pa\n", 3);
+		if(show == 1)
+			write(1, "pa\n", 3);
 		return (1);
 	}
 	else
 	{
-		helpa(head, b);
+		helpa(head, b, show);
 		return (2);
 	}
 }
