@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:09:48 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 12:36:56 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:51:39 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,11 @@
 
 void	rra(t_list **head, int show)
 {
+	if (!*head)
+	{
+		write(2, "Eroor\n", 6);
+		exit(0);
+	}
 	*head = (*head)->prev;
 	if(show == 1)
 		write(1, "rra\n", 4);
@@ -41,6 +46,11 @@ void	rrr(t_list **head, t_list **b, int show)
 
 void	ra(t_list **head, int show)
 {
+	if (!*head)
+	{
+		write(2, "Eroor\n", 6);
+		exit(0);
+	}
 	*head = (*head)->next;
 	if(show == 1)
 		write(1, "ra\n", 3);

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 12:38:44 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:12:34 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	rrr(t_list **head, t_list **b, int show);
 void	ra(t_list **head, int show);
 void	rb(t_list **head, int show);
 void	rr(t_list **a, t_list **b, int show);
-void	pb(t_list **head, t_list **b, int show);
+void	pb(t_list **head, t_list **b, int show, t_allvar *allvar);
 int		pa(t_list **head, t_list **b, int show);
 int		set_count(t_list **a, t_allvar *allvar);
 void	set_num(t_list **a, t_allvar *allvar);
