@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 15:18:52 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 17:03:03 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <limits.h>
 
 typedef struct s_list

@@ -49,5 +49,6 @@ clean:
 	$(FRM) $(NAME)
 
 fclean: clean
+	$(FRM) $(BN)
 
 re: fclean all
