@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:16:06 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:57:03 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:06:09 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int main(int ac, char *av[])
 	if (!parsing(&a, str))
 		return (0);
     gettline(&a, &b, &allvar);
+    
     return (0);
 }

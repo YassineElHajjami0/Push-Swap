@@ -34,6 +34,7 @@ AR = ar cr
 FRM = rm -rf
 
 NAME = push_swap 
+bn = checker
 HEADER = push_swap.h
 
 all: $(NAME)
@@ -42,7 +43,7 @@ $(NAME): $(SRCMAN) $(HEADER)
 	$(CC) $(CFLAGS) $(SRCMAN) -o $(NAME)
 
 bonus : $(BONUS) $(HEADER)
-	$(CC) $(CFLAGS) $(BONUS) -o $(NAME)
+	$(CC) $(CFLAGS) $(BONUS) -o $(bn)
 
 clean:
 	$(FRM) $(NAME)
