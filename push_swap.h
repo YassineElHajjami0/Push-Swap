@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:12:34 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/19 13:58:40 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_strjoin(int size, char **strs, char *sep);
 char	**ft_split(char const *s, char c);
 void	sa(t_list **lst, int show);
 void	sb(t_list **lst, int show);
-void	ss(t_list **head, int show);
+void	ss(t_list **head, t_list **b, int show);
 void	rra(t_list **head, int show);
 void	rrb(t_list **b, int show);
 void	rrr(t_list **head, t_list **b, int show);
