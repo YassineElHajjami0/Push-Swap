@@ -6,13 +6,13 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:12:08 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 13:08:39 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/20 16:56:04 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	fakeswaptwo(t_list **a, int watchlis, t_allvar *allvar)
+int	fakeswap(t_list **a, int watchlis, t_allvar *allvar)
 {
 	int	n;
 
@@ -32,45 +32,38 @@ int	fakeswaptwo(t_list **a, int watchlis, t_allvar *allvar)
 	}
 }
 
-int	fakeswap(t_list **a, int watchlis, t_allvar *allvar)
+int count_a_len(t_list **a)
 {
-	int	n;
-
-	sa(a, 0);
-	n = set_count(a, allvar);
-	if (n > watchlis)
+	int i = 0;
+	t_list *tmp;
+	tmp = *a;
+	while(1)
 	{
-		(*a)->next->num = 1;
-		write(1, "sa\n", 3);
-		return (n);
+		i++;
+		tmp = tmp->next;
+		if(tmp == *a)
+			break;
 	}
-	else
-	{
-		sa(a, 0);
-		n = set_count(a, allvar);
-		return (watchlis);
-	}
+	return (i);
 }
 
 void	move_to_top_of_a(t_list **a, t_list **b, t_allvar *allvar)
 {
 	int	i;
+	int	j;
 
+	j = count_a_len(a);
 	i = set_count(a, allvar);
-	while (1)
+	while (j > i)
 	{
-		i = fakeswaptwo(a, i, allvar);
-		if (!closest_one_to_head(a, allvar))
-			break ;
-		if (allvar->res == 0 && (*a)->num == 0)
+		i = fakeswap(a, i, allvar);
+		if ((*a)->num == 0)
 		{
 			pb(a, b, 1, allvar);
-			continue ;
+			j --;
 		}
-		if (allvar->res > 0)
-			ra(a, 1);
 		else
-			rra(a, 1);
+			rr(a, b, 1);
 	}
 }
 
