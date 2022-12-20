@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:21:26 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/18 14:16:30 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:29:56 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,44 @@ void	count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
 	{
 		search_bm_ina(a, allvar->tmpb, allvar);
 		search_bm_inb(b, allvar->tmpb, allvar);
-		allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
-		allvar->tmpb->bmove += abs(allvar->tmpb->bminb);
+		if (allvar->tmpb->bmina >= 0 && allvar->tmpb->bminb >= 0)
+		{
+			if (allvar->tmpb->bmina >= allvar->tmpb->bminb)
+				allvar->tmpb->bmove = allvar->tmpb->bmina;
+			else
+				allvar->tmpb->bmove = allvar->tmpb->bminb;
+		}
+		else if (allvar->tmpb->bmina >= 0 && allvar->tmpb->bminb >= 0)
+		{
+			if (abs(allvar->tmpb->bmina) >= abs(allvar->tmpb->bminb))
+				allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
+			else
+				allvar->tmpb->bmove = abs(allvar->tmpb->bminb);
+		}
+		else
+		{
+			allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
+			allvar->tmpb->bmove += abs(allvar->tmpb->bminb);
+		}
 		allvar->tmpb = allvar->tmpb->next;
 		if (allvar->tmpb == *b)
 			break ;
 	}
 }
+
+// void	count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
+// {
+// 	if (!*b)
+// 		return ;
+// 	allvar->tmpb = *b;
+// 	while (1)
+// 	{
+// 		search_bm_ina(a, allvar->tmpb, allvar);
+// 		search_bm_inb(b, allvar->tmpb, allvar);
+// 		allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
+// 		allvar->tmpb->bmove += abs(allvar->tmpb->bminb);
+// 		allvar->tmpb = allvar->tmpb->next;
+// 		if (allvar->tmpb == *b)
+// 			break ;
+// 	}
+// }
