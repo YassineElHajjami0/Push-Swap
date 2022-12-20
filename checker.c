@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:16:06 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 18:24:33 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/20 15:31:09 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,9 @@ void	checksorting(t_list **a, t_allvar *allvar)
 	write(1, "OK\n", 3);
 	exit(0);
 }
-void funcc(void)
-{
-	system("leaks push_swap");
 
-}
 int	main(int ac, char *av[])
 {
-	atexit (funcc);
 	t_list		*a;
 	t_list		*b;
 	char		**str;
