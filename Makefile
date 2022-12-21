@@ -11,6 +11,7 @@ SRCMAN = main.c \
 	ft_split.c \
 	ft_strjoin.c \
 	parsing.c \
+	ft_abs.c \
 
 BONUS = checker.c \
 	get_next_line.c \
@@ -26,7 +27,7 @@ BONUS = checker.c \
 	ft_strjoin.c \
 	parsing.c \
 	get_next_line_utils.c \
-
+	ft_abs.c \
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra

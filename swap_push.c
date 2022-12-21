@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:07:17 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 15:17:40 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:44:49 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,8 @@ void	sb(t_list **lst, int show)
 	t_list	*tmp;
 	t_list	*lhead;
 
-	if (!lst)
-	{
-		write(2, "Eroor\n", 6);
-		exit(0);
-	}
+	if (!*lst)
+		return ;
 	lhead = (*lst);
 	tmp = (*lst)->next;
 	(*lst)->next = tmp->next;
@@ -62,7 +59,7 @@ void	pb(t_list **head, t_list **b, int show, t_allvar *allvar)
 	if (!*head)
 	{
 		write(2, "Eroor\n", 6);
-		exit(0);
+		return ;
 	}
 	allvar->tmp = (*head)->next;
 	allvar->tmp->prev = (*head)->prev;

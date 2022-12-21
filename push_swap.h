@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 16:11:29 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 17:03:03 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:04:46 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ typedef struct s_allvar
 }				t_allvar;
 
 t_list	*ft_lstnew(int c);
-int		parsing(t_list **a, char **str);
-int		ft_atoi(const char *str);
+int		ft_abs(int x);
+int		parsing(t_list **a, int ac, char **av);
+long	ft_atoi(const char *str);
 void	ft_lstadd_back(t_list **lst, t_list *neww);
 char	*ft_strjoin(int size, char **strs, char *sep);
 char	**ft_split(char const *s, char c);

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:12:08 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/20 16:56:04 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:38:24 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,19 @@ int	fakeswap(t_list **a, int watchlis, t_allvar *allvar)
 	}
 }
 
-int count_a_len(t_list **a)
+int	count_a_len(t_list **a)
 {
-	int i = 0;
-	t_list *tmp;
+	int		i;
+	t_list	*tmp;
+
 	tmp = *a;
-	while(1)
+	i = 0;
+	while (1)
 	{
 		i++;
 		tmp = tmp->next;
-		if(tmp == *a)
-			break;
+		if (tmp == *a)
+			break ;
 	}
 	return (i);
 }

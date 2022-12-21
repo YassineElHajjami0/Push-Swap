@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 10:37:41 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 18:17:00 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:38:37 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,5 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		i++;
 	}
 	s[l] = '\0';
-	// free (*strs);
 	return (s);
 }

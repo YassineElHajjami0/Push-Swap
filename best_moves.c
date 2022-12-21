@@ -6,19 +6,11 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/16 16:21:26 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/20 14:29:56 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:22:43 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	abs(int x)
-{
-	if (x > 0)
-		return (x);
-	else
-		return (x * -1);
-}
 
 int	help_search_bm_in_a(t_list **a, t_list *tmpb, t_allvar *allvar)
 {
@@ -88,6 +80,29 @@ void	search_bm_inb(t_list **b, t_list *tmpb, t_allvar *allvar)
 		tmpb->bminb = allvar->j;
 }
 
+void	set_bmove(t_list *tmpb)
+{
+	if (tmpb->bmina >= 0 && tmpb->bminb >= 0)
+	{
+		if (tmpb->bmina >= tmpb->bminb)
+			tmpb->bmove = tmpb->bmina;
+		else
+			tmpb->bmove = tmpb->bminb;
+	}
+	else if (tmpb->bmina <= 0 && tmpb->bminb <= 0)
+	{
+		if (ft_abs(tmpb->bmina) >= ft_abs(tmpb->bminb))
+			tmpb->bmove = ft_abs(tmpb->bmina);
+		else
+			tmpb->bmove = ft_abs(tmpb->bminb);
+	}
+	else
+	{
+		tmpb->bmove = ft_abs(tmpb->bmina);
+		tmpb->bmove += ft_abs(tmpb->bminb);
+	}
+}
+
 void	count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
 {
 	if (!*b)
@@ -97,44 +112,9 @@ void	count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
 	{
 		search_bm_ina(a, allvar->tmpb, allvar);
 		search_bm_inb(b, allvar->tmpb, allvar);
-		if (allvar->tmpb->bmina >= 0 && allvar->tmpb->bminb >= 0)
-		{
-			if (allvar->tmpb->bmina >= allvar->tmpb->bminb)
-				allvar->tmpb->bmove = allvar->tmpb->bmina;
-			else
-				allvar->tmpb->bmove = allvar->tmpb->bminb;
-		}
-		else if (allvar->tmpb->bmina >= 0 && allvar->tmpb->bminb >= 0)
-		{
-			if (abs(allvar->tmpb->bmina) >= abs(allvar->tmpb->bminb))
-				allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
-			else
-				allvar->tmpb->bmove = abs(allvar->tmpb->bminb);
-		}
-		else
-		{
-			allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
-			allvar->tmpb->bmove += abs(allvar->tmpb->bminb);
-		}
+		set_bmove(allvar->tmpb);
 		allvar->tmpb = allvar->tmpb->next;
 		if (allvar->tmpb == *b)
 			break ;
 	}
 }
-
-// void	count_best_moves(t_list **a, t_list **b, t_allvar *allvar)
-// {
-// 	if (!*b)
-// 		return ;
-// 	allvar->tmpb = *b;
-// 	while (1)
-// 	{
-// 		search_bm_ina(a, allvar->tmpb, allvar);
-// 		search_bm_inb(b, allvar->tmpb, allvar);
-// 		allvar->tmpb->bmove = abs(allvar->tmpb->bmina);
-// 		allvar->tmpb->bmove += abs(allvar->tmpb->bminb);
-// 		allvar->tmpb = allvar->tmpb->next;
-// 		if (allvar->tmpb == *b)
-// 			break ;
-// 	}
-// }

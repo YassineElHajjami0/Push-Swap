@@ -6,22 +6,12 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 09:16:06 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/20 15:31:09 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 10:29:42 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "get_next_line.h"
-
-void	freestr(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		free(str[i++]);
-	free(str);
-}
 
 void	checkit(t_list **a, t_list **b, char *line, t_allvar *allvar)
 {
@@ -86,7 +76,6 @@ int	main(int ac, char *av[])
 {
 	t_list		*a;
 	t_list		*b;
-	char		**str;
 	t_allvar	allvar;
 
 	b = NULL;
@@ -96,12 +85,8 @@ int	main(int ac, char *av[])
 		write(2, "Eroor\n", 6);
 		return (0);
 	}
-	char *o = ft_strjoin(ac - 1, av + 1, " ");
-	str = ft_split(o , ' ');
-	if (!parsing(&a, str))
+	if (!parsing(&a, ac, av))
 		return (0);
-	free(o);
-	freestr(str);
 	gettline(&a, &b, &allvar);
 	checksorting(&a, &allvar);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: yel-hajj <yel-hajj@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 08:04:53 by yel-hajj          #+#    #+#             */
-/*   Updated: 2022/12/19 15:16:34 by yel-hajj         ###   ########.fr       */
+/*   Updated: 2022/12/21 11:04:10 by yel-hajj         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ t_list	*ft_lstnew(int c)
 	return (n);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int		i;
-	size_t	res;
-	int		nakis;
+	long	res;
+	long	nakis;
 
 	i = 0;
 	res = 0;
@@ -48,13 +48,9 @@ int	ft_atoi(const char *str)
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		res = res * 10 + str[i] - '0';
-		if (res > 9223372036854775807 && nakis > 0)
-			return (-1);
-		if (res > 0 && res - 1 > 9223372036854775807 && nakis < 0)
-			return (0);
 		i++;
 	}
-	return ((int)res * nakis);
+	return (res * nakis);
 }
 
 void	ft_lstadd_back(t_list **lst, t_list *neww)
